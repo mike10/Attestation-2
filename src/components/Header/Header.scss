@@ -1,0 +1,100 @@
+@import "../../SCSS/marking.scss";
+
+.header{
+    @include LayoutFixed;   
+    top:0; 
+    z-index: 2;
+}
+.header__menu320{
+    display: none;
+}
+.header__nav{
+    display: flex;
+    justify-content: space-between;
+    padding: .5em 0;
+    line-height: 2em;
+}
+
+.header__users, 
+.header__posts,
+.header__sign,
+.header__reg{
+    display: inline-block;
+}
+
+.header__posts{
+    margin-left: 2em;
+}
+
+.header__reg{
+    margin-left: .5em;
+    padding-left: .5em;
+    border-left: 2px solid $bg-color;
+}
+
+.header__img{
+    height: 2em;
+    border-radius: 1em;
+    display: inline;
+}
+
+.header__sign {
+    display: flex;
+}
+
+.header__sign a{
+    display: flex;
+
+}
+
+.header__sign-reg{
+    display: flex;
+}
+
+@media all and (max-width : 768px){
+  .header__logo{
+      display: none;
+  }
+}
+@media all and (max-width : 320px){
+    
+    .header__img{
+        display: none;
+    }
+
+    .header__menu320{
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        border: 1px solid grey;
+        border-radius: 10px;
+        overflow: hidden;
+        vertical-align: middle;
+        font-weight: bold;
+        line-height: 200%;
+        text-align: center;
+    }
+
+    .header__nav{
+        border: 1px solid grey;
+        border-radius: 10px;
+        display:none;
+        flex-direction: column;
+        position: relative;
+        padding: 0 15px;
+        width: 15em;
+        
+        background-color: inherit;
+        
+    }
+    .header__users, 
+    .header__posts,
+    .header__sign,
+    .header__reg,
+    .header__sign-reg{
+        display: block;
+        margin: 10px 0;
+        padding: 0;
+    }
+    
+}

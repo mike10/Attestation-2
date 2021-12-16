@@ -1,0 +1,53 @@
+{
+    "users": "Users",
+    "posts": "Posts",
+    "sign": "Log in",
+    "registration": "Registration",
+    "logo": "Eksel-Moxel",
+    "exit": "Log out",
+    "change_view": "Change view",
+    "pageSign":{
+        "sign": "Sign",
+        "Input your id": "Input your id",
+        "sign in": "Sign in",
+        "Do you have an account": "Do you have an account?",
+        "reg": "Registration",
+        "incorrect": "Incorrect ID entry"
+      },
+      "pageReg": {
+        "reg": "Registration",
+        "name": "Name",
+        "input name": "Input your name",
+        "surname": "Surname",
+        "input surname": "Input your surname",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "datebirthday": "Date of birthday",
+        "formatdb": "DD.MM.YYYY",
+        "phone": "Phone",
+        "reg-butn": "Registr",
+        "have acc": "Do you have accout?",
+        "sign in": "Sign in",
+        "messages":{
+            "required field": "Required field!",
+            "input data": "Entering the date in the format DD.MM.YYYY",
+            "input email": "Entering email in the format anonim@example.com",
+            "input phone": "Phone input in the format +71234567890"
+        },
+        "validation":{
+            "name":"Input your name!",
+            "surname":"Input your surname!",
+            "email":"Email entered incorrectly!",
+            "phone":"Phone entered incorrectly!",
+            "day":"Day entered incorrectly!",
+            "month":"Month entered incorrectly!",
+            "notime":"This time has not come yet!",
+            "toolate": "Too late!",
+            "tooearly": "Too early!"
+        } 
+    } 
+}
+
+ 
+

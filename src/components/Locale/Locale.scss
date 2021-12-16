@@ -1,0 +1,12 @@
+.locale{
+    display: flex;
+    margin-right: 2em;
+    font-weight: bold;
+}
+.locale a:first-child{
+    margin-right: .5em;
+}
+.locale__a_active{
+    text-decoration: underline;
+    text-transform: uppercase;
+}

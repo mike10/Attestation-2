@@ -1,0 +1,65 @@
+@import "./marking.scss";
+
+.form{
+    @include formView;
+    
+}
+
+.form__element{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.form__p{
+    margin-bottom: .5em;
+    text-align: left;
+}
+
+.form__input:invalid:placeholder-shown{
+    outline: none;
+}
+
+.form__input:invalid{
+    outline: 2px solid red;
+}
+
+.form__input:valid{
+    outline: 2px solid green;
+}
+
+.form__input:valid:placeholder-shown{
+    outline: none;
+}
+
+.form__message-error{
+    display: none;
+    background-color: red;
+    color:#fff;
+    font-size: 12px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.form__input:invalid:not(:placeholder-shown) + .form__message-error{
+    display: block;
+}
+.form__input:invalid:focus + .form__message-error{
+    display: none;
+}
+
+.form__input:not([type="radio"]){
+    width: 100%;
+    height: 2em;
+    border-color: #dfdfdf;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.form__input[type=button]{
+    width: 100%;
+    height: 2em;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    border-width: 1px;
+}

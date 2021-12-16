@@ -1,0 +1,60 @@
+@import "../../SCSS/marking.scss";
+@import "../../SCSS/tooltip.scss";
+
+.post{
+    @include themeView;
+    
+    cursor: pointer;
+}
+.post_17em{
+    width: 17em;
+}
+.post_modal{
+    overflow: auto;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.post__owner{
+    display: flex;
+}
+.post_avatar{
+     width: 4em;
+     height: 4em;
+     border-radius: 50%;
+}
+
+.post_picture{
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.post__name-date{
+    margin-left: 1em;
+}
+
+.post__p{
+    font-size: .85em;
+}
+
+.post__date{
+    font-size: .65em;
+}
+
+.comments{
+    display: flex;
+    flex-wrap:wrap;
+    overflow-y: auto;
+}
+.commens_margin{
+    margin-top: 30px;
+}
+.comment{
+    @include themeView;
+}
+.post__text{
+    font-size: .85em; 
+}
+

@@ -1,0 +1,49 @@
+$bg-color: #f2f2f2;
+$bg-fixedElem-color: #fff;
+$bgWhite: #fff;
+$colorForBorder: #dfdfdf;
+
+
+.show{
+	display: block;
+}
+.un-show{
+	display: none;
+}
+
+@mixin LayoutFixed{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    padding: 0 10%;
+    background-color: $bg-fixedElem-color;
+    line-height: 3em;
+}
+
+@mixin border{
+  border-radius: 10px;
+  
+}
+
+@mixin themeView{
+  @include border; // border-radius: 10px;
+  border: 2px solid $colorForBorder;
+  background-color: $bgWhite;
+  margin: 1em;
+  padding: 1em;
+  
+}
+
+@mixin formView{
+    @include themeView;
+    width: 20em;
+    padding: 1em;
+    text-align: center;
+}
+
+
+
+.error{
+    outline: 3px solid red;
+}

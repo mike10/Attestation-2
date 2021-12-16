@@ -1,0 +1,81 @@
+@import "../../SCSS/marking.scss";
+
+.footer{
+    top: calc(100% - 3em);
+    @include LayoutFixed;
+    display: flex;
+    justify-content: space-between;
+}
+label{
+    cursor: pointer;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 2.1em;
+    height: 1.1em;
+    vertical-align: middle;
+    margin-left: 1em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {display:none;}
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border: 1px solid black;
+    -webkit-transition: .4s;
+    transition: .4s;
+    
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1em;
+    width: 1em;
+    left: 0px;
+    bottom: 0px;
+    background-color: red;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: black
+  }
+  
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(1em);
+    -ms-transform: translateX(1em);
+    transform: translateX(1em);
+    background-color: white;
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 1.5em;
+    //background-color: grey;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+    
+    background-color: black;
+  }
+
+  @media all and (max-width : 320px){
+    .logo{
+      display: none;
+    }
+  }

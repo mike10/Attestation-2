@@ -1,0 +1,51 @@
+@import "../../SCSS/marking.scss";
+
+.modal-win__close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 5em;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.modal-win{
+    position: fixed;
+    left:0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: 5;
+    overflow-y: auto;
+}
+
+.modal-win__form{
+    @include themeView;
+    position: relative;
+    width: 80%;
+    display: inline-block;
+    z-index: 10;
+}
+
+.modal-win__background{
+    background-color:darkkhaki;
+    position: absolute;
+    left:0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    opacity: .75;
+}
+
+.modal-win__inline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: .4em;
+}
+
+.modal-win__img{
+    width: 10em;
+    margin: 0 auto;
+}

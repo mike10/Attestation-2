@@ -1,0 +1,43 @@
+@import "../../SCSS/marking.scss";
+
+.arrowup{
+	//background:#000;
+    position: fixed;
+    right: 1em;
+    bottom: 3em;    
+	text-align:center;
+	font-size:180%;
+	
+	font-family: Calibri, arial, sans-serif;
+}
+.to-top{
+	color:#000;
+	padding-top:1.8em;
+	display:inline-block;/* or block */
+	position:relative;
+	border-color:#000;
+	text-decoration:none;
+	transition:all .3s ease-out;
+}
+.to-top:before{
+	content:'▲';
+	font-size:.9em;
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-.7em;
+	border:solid .13em #000;
+	border-radius:10em;
+	width:1.4em;
+	height:1.4em;
+	line-height:1.3em;
+	border-color:inherit;
+	transition:transform .5s ease-in;
+}
+.to-top:hover{
+	color:red;
+	border-color:red;
+}
+.to-top:hover:before{
+	transform: rotate(360deg);
+}

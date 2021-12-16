@@ -1,0 +1,16 @@
+@import "../../SCSS/marking.scss";
+@import "../../SCSS/tooltip.scss";
+
+.user{
+    @include themeView;
+    cursor: pointer;
+}
+.user img{
+    width: 10em;
+    height: 10em;
+}
+
+.user__img{
+    border-radius: 10px;
+}
+  

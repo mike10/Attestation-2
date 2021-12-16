@@ -1,0 +1,24 @@
+@import "../../SCSS/marking.scss";
+@import "../../SCSS/form.scss";
+
+.EditFormProfile .form{
+    background-color: $bg-color;
+
+}
+
+.modal-win__img{
+    width: 20em;
+    height: auto;
+    overflow: hidden;
+    @include border;
+}
+
+.form{
+    @border;
+}    
+
+.form__label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
