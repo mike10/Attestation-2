@@ -15,36 +15,38 @@ import ModalWin from './components/ModalWin/ModalWin';
 import EditFormProfile from './components/EditFormProfile/EditFormProfile';
 import ArrowUp from './components/ArrowUp/ArrowUp';
 import "./locale/i18n"
-
+import { useSelector } from 'react-redux'
 
 
 const App = () => {
-  const containerRef = useRef(null)
+  const theme = useSelector((state) => state.theme.value);
   return (
-    <div className="App">
+    <div className={`App App_theme-${theme}`}>
         <Router>
-          <Header/>
-          <div className="show-must-be-here" ref={containerRef}>
-            
-            <Switch>
-              <Route path="/posts">
-                <ListPosts/>
-              </Route>
-              <Route path="/users">
-                <ListUsers />
-              </Route> 
-              <Route path="/sign">
-                <Sign />
-              </Route>
-              <Route exact path="/">
-                <Registration />
-              </Route>
-              <Route path="/profile/:id">
-                <UserProfile/>
-              </Route>
-            </Switch>
+          
+            <Header/>
+            <div className="show-must-be-here form_flex form_center" >
+              
+              <Switch>
+                <Route path="/posts">
+                  <ListPosts/>
+                </Route>
+                <Route path="/users">
+                  <ListUsers />
+                </Route> 
+                <Route path="/sign">
+                  <Sign />
+                </Route>
+                <Route exact path="/">
+                  <Registration />
+                </Route>
+                <Route path="/profile/:id">
+                  <UserProfile/>
+                </Route>
+              </Switch>
 
-          </div>
+            </div>
+          
         </Router>
         <Footer/>  
     </div>

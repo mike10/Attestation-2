@@ -39,7 +39,7 @@
     padding: 1ch 1.5ch;
     border-radius: .3ch;
     box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
-    background: $bgWhite;//#333;
+    background: #fff;//#333;/////////////////////////////////////сменить цвет
     color: #000;//#fff;
     z-index: 1; /* absurdity 2 */
   }
@@ -61,7 +61,7 @@
   [tooltip][flow^="up"]::before {
     bottom: 100%;
     border-bottom-width: 0;
-    border-top-color: $bgWhite;//#333;
+    border-top-color: #fff;//#333;/////////////////////////////////////сменить цвет
   }
   [tooltip]:not([flow])::after,
   [tooltip][flow^="up"]::after {

@@ -12,10 +12,10 @@ const ListUsers = (props) => {
   const childRef = useRef();
   const [scroll, setScroll] = useState(0);
   const [showAnimWait, setShowAnimWait] = useState("show");
-  const page = useSelector((state) => state.users.page);
-  const total = useSelector((state) => state.users.total);
-  const data = useSelector((state) => state.users.data);
-  const status = useSelector((state) => state.users.status);
+  const page = useSelector(state => state.users.page);
+  const isFull = useSelector(state => state.users.isFull);
+  const data = useSelector(state => state.users.data);
+  const status = useSelector(state => state.users.status);
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -26,14 +26,14 @@ const ListUsers = (props) => {
   }, [])
 
   useEffect(() => {
-  }, [page, data.length]);
+  }, [data.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting) {
           observer.unobserve(childRef.current)
-          if(total > page*20){
+          if(!isFull){
             dispatch(fetchUsers(page));
           }
         }
@@ -48,8 +48,10 @@ const ListUsers = (props) => {
     if (childRef.current) {
       observer.observe(childRef.current);
     }
-    
-  }, [childRef, page]);
+    return () => {
+      observer.disconnect()
+    }
+  }, [ page]);
 
   useEffect(() => {
     dispatch(fetchUsers(page));
@@ -58,7 +60,7 @@ const ListUsers = (props) => {
   useEffect(() => {
     switch(status){
       case "loading": setShowAnimWait("show"); break;
-      case "error": alert("error"); break;
+      case "error": alert("error"); setShowAnimWait("un-show");   break;
       case "success": setShowAnimWait("un-show");   break;
     }
   }, [status]);   
@@ -77,7 +79,7 @@ const ListUsers = (props) => {
 
     return (
 
-      <div  className="listusers" >
+      <div  className="listusers form_flex form_center" >
           <AnimWait onShow={showAnimWait}  />
           <ArrowUp onShow={scroll>document.documentElement.clientHeight ? "show" : "un-show" }/>  
           {mountUsers()}

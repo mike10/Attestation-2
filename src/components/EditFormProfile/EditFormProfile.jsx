@@ -8,17 +8,17 @@ import { formatDate }  from "../../additionData/FormatDate";
 import AnimWait from '../AnimWait/AnimWait';
 
 const EditFormProfile = () => {
-    
-    const status = useSelector((state) => state.sign.status);
+    const theme = useSelector(state => state.theme.value);
+    const status = useSelector(state => state.sign.status);
     const [showAnimWait, setShowAnimWait] = useState("show");
-    const profile_request = useSelector((state) => state.sign.data);
+    const profile_request = useSelector(state => state.sign.data);
     const [profile, setProfile] = useState({...profile_request})
     const dispatch = useDispatch()
  
     useEffect(() => {
         switch(status){
           case "loading": setShowAnimWait("show"); break;
-          case "error": alert("error"); break;
+          case "error": alert("Ошибка в сети!"); setShowAnimWait("un-show"); break;
           case "success": setShowAnimWait("un-show");   break;
         }
       }, [status]);   
@@ -32,7 +32,6 @@ const EditFormProfile = () => {
     }, [profile.picture])
 
     const updateDate = () => {
-        console.log(profile);
         const [isOk, answer] = validation({...profile})
         
         if(isOk) {
@@ -85,7 +84,7 @@ const EditFormProfile = () => {
     } 
 
     return(
-        <div className="EditFormProfile">
+        <div className={`EditFormProfile form form_theme-${theme}`}>
             <AnimWait onShow={showAnimWait}  />
             <div >
                 <img className="modal-win__img" src={profile.picture} alt="" />
@@ -94,7 +93,7 @@ const EditFormProfile = () => {
                 <div className="form-edit__update-pic"><label>Обновить фаил<input type="file" name="picture" accept="image/*" className="un-show" onChange={loadFile}/></label></div>
                 <div className="form-edit__update-pic" onClick={()=>setProfile({...profile, picture: null})}>Удалить фотографию</div>
             </div>
-            <form  className="form-edit form">
+            <form  className={`form form-edit form_theme-f2${theme}`}>
                 <div className="form__element"> 
                     <label className="form__label">
                         <p className="form__p">Имя:</p>

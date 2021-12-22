@@ -1,49 +1,77 @@
-$bg-color: #f2f2f2;
-$bg-fixedElem-color: #fff;
+$bgColor: #f2f2f2;
 $bgWhite: #fff;
-$colorForBorder: #dfdfdf;
+$borderColor: #dfdfdf;
 
+$white: #fff;
+$grey: #333;
 
 .show{
 	display: block;
+}
+.show_flex{
+	display: flex;
 }
 .un-show{
 	display: none;
 }
 
-@mixin LayoutFixed{
-    position: fixed;
-    left: 0;
-    width: 100%;
-    height: 3em;
-    padding: 0 10%;
-    background-color: $bg-fixedElem-color;
-    line-height: 3em;
+.form-fixed{
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 3em;
+  padding: 0 10%;
 }
 
-@mixin border{
+.form{
+  border: 2px solid $borderColor;
   border-radius: 10px;
-  
-}
-
-@mixin themeView{
-  @include border; // border-radius: 10px;
-  border: 2px solid $colorForBorder;
-  background-color: $bgWhite;
-  margin: 1em;
+  *background-color: $bgWhite;
+  margin: .5em;
   padding: 1em;
+}
+
+.form_theme-white{
+  background-color: #fff;
+  color: #000;
+}
+.form_theme-dark{
+  background-color: #333;
+  color: #fff;
+}
+.form_theme-f2white{
+  background-color: #f2f2f2;
+  color: #000;
+}
+.form_theme-f2dark{
+  background-color: #555;
+  color: #fff;
+}
+.form_flex{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+}
+.form_center{
+  align-items: center;
+  justify-content: center;
+}
+.form_flex-start{
+  justify-content: flex-start;
+}
+.form_border-rad10{
+  border-radius: 10px;
+}
+.form_w40em{
+  width: 40em;
+}
+.form_align-center{
+  text-align: center;
+}
+.form_scroll{
+  overflow-y: auto;
   
 }
-
-@mixin formView{
-    @include themeView;
-    width: 20em;
-    padding: 1em;
-    text-align: center;
-}
-
-
-
 .error{
     outline: 3px solid red;
 }

@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 const Registration = () => {
   
   const { t } = useTranslation( "translation", { keyPrefix: 'pageReg' } );
+  const theme = useSelector(state => state.theme.value);
   let history = useHistory();
   const status = useSelector((state) => state.sign.status);
   const newUserId = useSelector((state) => state.sign.data.id);
@@ -21,7 +22,7 @@ const Registration = () => {
   useEffect(() => {
     switch(status){
       case "loading": setShow("show"); break;
-      case "error": alert("error"); break;
+      case "error": alert("error"); setShow("un-show"); break;
       case "success": {
         setShow("un-show");
         if(newUserId) {
@@ -42,7 +43,6 @@ const Registration = () => {
         answer = {...answer, title: "mr"}
         console.log(answer);
       }
-      //createNewUser(answer)
       dispatch(fetchCreateUser(JSON.stringify(answer)))
     }else{
       alert(t("validation."+answer))
@@ -51,7 +51,7 @@ const Registration = () => {
 
   return (
     
-    <div className="registration form">
+    <div className={`registration form form_theme-${theme}`}>
       <AnimWait onShow={show}/>
 
       <h1>{t("reg")}</h1>
@@ -117,12 +117,13 @@ const Registration = () => {
         </label>
       </div>
 
-      <div>
+      <div className='form_flex form_center'>
         <input type="button" value={t("reg-butn")} onClick={onSubmit}/>
       </div>
 
       <div className="registration__sign">
-      {t("have acc")} <a href="/sign">{t("sign in")}</a> 
+        <span>{t("have acc")}</span>
+       <a href="/sign" >{t("sign in")}</a> 
       </div>
     </div>
   );

@@ -1,8 +1,7 @@
-@import "../../SCSS/marking.scss";
-@import "../../SCSS/form.scss";
 
-.EditFormProfile .form{
-    background-color: $bg-color;
+
+.EditFormProfile{
+   width: 400px;
 
 }
 
@@ -10,15 +9,6 @@
     width: 20em;
     height: auto;
     overflow: hidden;
-    @include border;
+    //@include border;
 }
 
-.form{
-    @border;
-}    
-
-.form__label{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}

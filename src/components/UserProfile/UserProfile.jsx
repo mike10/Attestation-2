@@ -2,8 +2,7 @@ import "./UserProfile.scss"
 import { useEffect, useState} from 'react';
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchProfile } from "../../redux/profileSlice";
-import { fetchProfilePosts } from "../../redux/profilePostsSlice"
+import { fetchProfile, fetchProfilePost } from "../../redux/profileSlice";
 import AnimWait from '../AnimWait/AnimWait';
 import ModalWin from "../ModalWin/ModalWin";
 import EditFormProfile from "../EditFormProfile/EditFormProfile";
@@ -13,41 +12,74 @@ import {formatDate}  from "../../additionData/FormatDate";
  const UserProfile = () => {
 
     let { id } = useParams();
+    const theme = useSelector((state) => state.theme.value);
     const [show, setShow] = useState("show");
     const [modalShow, setModalShow] = useState("un-show");
     const profile = useSelector((state) => state.profile.data);
     const signUser = useSelector((state) => state.sign.data);
-    const profileStatus = useSelector((state) => state.profile.status);
-    const posts = useSelector((state) => state.profilePosts.data);
-    const postsStatus = useSelector((state) => state.profilePosts.status);
+    const status = useSelector((state) => state.profile.status);
+    const posts = useSelector((state) => state.profile.posts.data);
+    const pagePosts = useSelector((state) => state.profile.posts.page);
+    const isFullPosts = useSelector((state) => state.profile.posts.isFull);
+    
     const dispatch = useDispatch()
+    
+    useEffect(() => {
+        if(profile.id != id){
+            dispatch(fetchProfile(id));
+        }
+    }, [id]);
 
     useEffect(() => {
         dispatch(fetchProfile(id));
-        dispatch(fetchProfilePosts(id));
-    }, []);
+    }, [signUser]);
     
     useEffect(() => {
-        let status = profileStatus || postsStatus
         switch(status){
           case "loading": setShow("show"); break;
-          case "error": alert("error"); break;
+          case "error": alert("error"); setShow("un-show"); break;
           case "success":  setShow("un-show"); break;
         }
-    }, [profileStatus, postsStatus]); 
+    }, [status]); 
 
     useEffect(() => {
-    }, [profile]); 
+        console.log("pagePosts, isFullPosts");
+        console.log(pagePosts, isFullPosts);
+    }, [pagePosts, isFullPosts]);
+    
+    const handleScroll = () => {
+        let positioScroll = parseInt(window.innerHeight)+parseInt(window.pageYOffset)
+            let scrollHeight = Math.max(
+                document.body.scrollHeight, document.documentElement.scrollHeight,
+                document.body.offsetHeight, document.documentElement.offsetHeight,
+                document.body.clientHeight, document.documentElement.clientHeight
+              );
+            if(positioScroll >= scrollHeight){
+                if(!isFullPosts){
+                    console.log("запуск");
+                    console.log(pagePosts);
+                    dispatch(fetchProfilePost({id: id, page: pagePosts}));
+                }
+                
+            } 
+    }
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll);
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, [pagePosts])
+     
 
     const getPosts = () => {
         if (posts.length == 0){
-            return <p>постов нет</p>   
+            return <p className="userprofile_w100">постов нет</p>   
         }
         
         let post = posts.map((val, index) => {
             return (
-                <div key={index} className="userprofile_posts">
-                    <img src={val.image} alt="" />
+                <div key={index} className={`userprofile_w15em form form_theme-${theme}`}>
+                    <img src={val.image} alt="" className="form_border-rad10 userprofile_w13em"/>
                     <p>{val.text}</p>
                 </div>
             )
@@ -66,16 +98,17 @@ import {formatDate}  from "../../additionData/FormatDate";
     }
 
     return (
-        <div className="userprofile">
+        <div className="userprofile" onScroll={handleScroll}>
             <AnimWait onShow={show}/>
             <ModalWin onShow={modalShow} onClose={()=>setModalShow("un-show")}>
                 <EditFormProfile/>
             </ModalWin>
 
-            <div className="userprofile__prof">
-                <div className="userprofile__prof-info">
-                    <div>
-                        <img className="userprofile__img" src={profile.picture} alt="" />
+            <div className={`userprofile__prof form form_theme-${theme}`} >
+                <div className="form_flex">
+                    <div >
+                        {profile.picture && <img className="userprofile__img form_border-rad10" src={profile.picture} alt="" />}
+                        
                     </div>
                     <div>
                         <div >
@@ -110,7 +143,7 @@ import {formatDate}  from "../../additionData/FormatDate";
                 {mountButtonEdit()}
             </div>
 
-            <div className="userprofile__user-posts">
+            <div className="userprofile__user-posts form_flex form_flex-start">
                 { getPosts() }
             </div>
             

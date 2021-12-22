@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 const Sign = () => {
 
   const { t } = useTranslation( "translation", { keyPrefix: 'pageSign' } );
-  //i18n.t();
+  const theme = useSelector((state) => state.theme.value);
   const [show, setShow] = useState("un-show");
   const [error, setError] = useState("");
   const [value, setValue] = useState("")
@@ -20,7 +20,7 @@ const Sign = () => {
   useEffect(() => {
     switch(status){
       case "loading": setShow("show"); break;
-      case "error": alert("error"); break;
+      case "error": alert("error"); setShow("un-show"); break;
       case "success": 
         setShow("un-show"); 
         localStorage.setItem("user", value); 
@@ -53,7 +53,7 @@ const Sign = () => {
   
 
   return (
-    <div className="sign">
+    <div className={`sign form form_theme-${theme}`}>
       <AnimWait onShow={show}/>
       <div>
         <h1>{t("sign")}</h1>

@@ -1,15 +1,22 @@
 .App {
   height: inherit;
-  
+  border-color: inherit;
   width: 100%;
   height: 100%;
   padding: 5em 10%;
+  //overflow: auto;
 }
-
+.App_theme-white{
+  background-color: #f2f2f2;
+  color: #000;
+}
+.App_theme-dark{
+  background-color: #555;
+  color: #fff;
+}
 .show-must-be-here{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  background-color: inherit;
+  color: inherit;
 }
 
 @media all and (max-width : 1024px){

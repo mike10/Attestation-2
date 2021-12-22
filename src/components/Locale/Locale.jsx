@@ -6,7 +6,7 @@ const Locale = () => {
 
 
     const [active, setActive] = useState({ru: "locale__a_active", en:""})
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
     const OnClick = (e) => {
         const item = e.target.outerText.toLowerCase()
@@ -16,8 +16,6 @@ const Locale = () => {
         } else {
            setActive({ru:"", en: "locale__a_active" }) 
         }
-        
-        console.log(active);
     }
 
     return (

@@ -51,7 +51,6 @@ const signSlice = createSlice({
         //console.log(action.payload);
         return {
           data: action.payload,
-          //error: action.payload?.message,
           status: "success"
         }
       },
