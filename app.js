@@ -1,27 +1,10 @@
 // подключение express
 const express = require("express");
-//let http = require('http');
 const axios = require('axios');
 const app = express();
 const postPars = express.json();
-//import { User } from "./addition/User.js"
-//const User = require('./addition/User') 
 
-const User = {//Список пользователей
-    page: 0,
-    total: 0,
-    limit: 20,
-}
-const Post = {//Список постов
-    page: 0,
-    total: 0,
-    limit: 20,
-}
-const PostProfile = {//Посты в профиле
-    page: 0,
-    total: 0,
-    limit: 5,
-}
+
 app.use((req, res, next) =>{
     res.header('Access-Control-Allow-Origin', "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -30,55 +13,45 @@ app.use((req, res, next) =>{
     next()
 })
 app.get("/users", async function(request, response){//список пользователей
-    let limit = User.limit
-    let total = User.total
-    let page = request.query.page;
-    
-    let answ 
     try{
-        answ = await axios.get(`https://dummyapi.io/data/v1/user?page=${page}&limit=20`, {
+        let page = request.query.page;
+        let answ = await axios.get(`https://dummyapi.io/data/v1/user?page=${page}&limit=20`, {
         headers: {
             "app-id": '61812ad9523754cd8285f9e7'
             }
         })
-        User.page = answ.data.page + 1
-        User.limit = answ.data.limit
-        User.total = answ.data.total
-        if(total < page*limit ){
-            let data = answ.data
-            data.isFull = true    
-            response.send({data: data, page: User.page})
+        
+        page =  parseInt(page) + 1
+        let limit = 20
+        let total = answ.data.total
+        if(total - (page*limit) > 0){
+            response.send({data: answ.data, page: page, isFull: false}) 
         }else{
-           response.send({data: answ.data.data, page: User.page}) 
+            response.send({data: answ.data, page: page, isFull: true})
         }
+       
     }catch(err){
         response.send(err)
     }
 });
 
 app.get("/posts", async function(request, response){//список постов
-	let limit = Post.limit
-    let total = Post.total
-    let page = request.query.page;
-
-    let answ 
     try{
-        answ = await axios.get(`https://dummyapi.io/data/v1/post?page=${page}&limit=20`, {
+        let page = request.query.page;
+        let answ = await axios.get(`https://dummyapi.io/data/v1/post?page=${page}&limit=20`, {
         headers: {
             "app-id": '61812ad9523754cd8285f9e7'
             }
         })     
-        Post.page = answ.data.page + 1
-        Post.limit = answ.data.limit
-        Post.total = answ.data.total
-        if(total < page*limit ){
-            let data = answ.data
-            data.isFull = true    
-            response.send({data: data, page: Post.page})
-           
+        page =  parseInt(page) + 1
+        let limit = 20
+        let total = answ.data.total
+        console.log(total - (page*limit));
+        if(total - (page*limit) > 0){
+            response.send({data: answ.data, page: page, isFull: false}) 
         }else{
-           response.send({data: answ.data.data, page: Post.page}) 
-        } 
+            response.send({data: answ.data, page: page, isFull: true})
+        }
     }catch(err){
         response.send(err)
     }
@@ -109,6 +82,19 @@ app.get("/comments", async function(request, response){//список комме
     }
 });
 
+app.get("/sign/:id", async function(request, response){//Добавление постов в профиль
+    try{
+        let id = request.params.id
+        answ = await axios.get(`https://dummyapi.io/data/v1/user/${id}`, {
+        headers: {
+            "app-id": '61812ad9523754cd8285f9e7'
+            }
+        })
+        response.send(answ.data) 
+    }catch(err){
+        response.send(err)
+    }
+});
 
 app.route("/profile/:id")
     .get(async function(request, response, next){//Полная инфа пользователя

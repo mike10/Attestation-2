@@ -38,6 +38,7 @@ const ListPosts = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           observer.unobserve(childRef.current)
+          console.log(page);
           if(!isFull){
             dispatch(fetchPosts(page));
           }
@@ -60,8 +61,8 @@ const ListPosts = () => {
 
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+    dispatch(fetchPosts(page));
+  }, []);
 
   useEffect(() => {
     switch(statusPost){

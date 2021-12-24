@@ -16,19 +16,10 @@ const usersSlice = createSlice({
     reducers: {},
     extraReducers: {
       [fetchUsers.fulfilled]: (state, action) => {
-        let isfull = action.payload.data?.isFull
-        if(isfull){
-          return {
-            data: state.data,
-            page: state.page,
-            isFull: isfull,
-            status: "success"
-          }
-        }
         return {
-          data: [...state.data, ...action.payload.data],
+          data: [...state.data, ...action.payload.data.data],
           page: action.payload.page,
-          isFull: state.isFull,
+          isFull: action.payload.isFull,
           status: "success"
         }
       },
@@ -43,8 +34,8 @@ const usersSlice = createSlice({
       [fetchUsers.rejected]: (state, action) => {
         return {
           data: state.data,
-          ifFull: state.isFull,
-           isFull: state.isFull,
+          page: state.page,
+          isFull: state.isFull,
           status: "error"
         }
       }

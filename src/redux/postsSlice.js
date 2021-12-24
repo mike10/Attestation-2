@@ -38,20 +38,11 @@ const postsSlice = createSlice({
     },
     extraReducers: {
       [fetchPosts.fulfilled]: (state, action) => {
-        let isfull = action.payload.data?.isFull
-        if(isfull){
-          return {
-            data: state.data,
-            page: state.page,
-            isFull: false,
-            comments: [],
-            status: "success"
-          }
-        }
+        console.log(action.payload);
         return {
-          data: [...state.data, ...action.payload.data],
+          data: [...state.data, ...action.payload.data.data],
           page: action.payload.page,
-          isFull: state.isFull,
+          isFull: action.payload.isFull,
           comments: {
             data: [],
             page: 0,

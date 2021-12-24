@@ -1,11 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const fetchSign = createAsyncThunk('sign', async (id) => {
-  const res = await fetch( `https://dummyapi.io/data/v1/user/${id}`, {
-      headers: {
-          "app-id": '61812ad9523754cd8285f9e7'
-      }
-    });
+  const res = await fetch( `http://127.0.0.1:7000/sign/${id}`);
   return res.json();
 })
 
@@ -48,7 +44,6 @@ const signSlice = createSlice({
     },
     extraReducers: {
       [fetchSign.fulfilled]: (state, action) => {
-        //console.log(action.payload);
         return {
           data: action.payload,
           status: "success"
