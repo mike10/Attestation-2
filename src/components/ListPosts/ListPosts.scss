@@ -6,3 +6,12 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
 }
+
+@media all and (max-width : 320px){
+    .comments_hor-scroll{
+        overflow-y: hidden;
+        overflow-x: auto;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

@@ -3,10 +3,25 @@
     margin-right: 2em;
     font-weight: bold;
 }
-.locale a:first-child{
+.locale320{
+    display: none;
+}
+.locale a:first-child,
+.locale320 a:first-child{
     margin-right: .5em;
 }
 .locale__a_active{
     text-decoration: underline;
     text-transform: uppercase;
 }
+
+@media all and (max-width : 320px){
+    .locale{
+        display: none;
+    }
+    .locale320{
+        display: flex;
+        
+    }
+}
+

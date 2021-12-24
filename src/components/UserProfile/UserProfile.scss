@@ -6,7 +6,7 @@
 .userprofile__prof{
     display: inline-flex;
     justify-content: space-between;
-    //width: 100%;
+    flex-wrap: wrap;
     text-align: left;
 }
 .userprofile__prof-info{
@@ -74,6 +74,13 @@
 
 
 @media all and (max-width : 320px){
+    .userprofile{
+        width: 320px;
+        
+    }
+    .userprofile__img{
+        width: 100%
+    }
     .userprofile__user-posts{
        justify-content: center;
     }

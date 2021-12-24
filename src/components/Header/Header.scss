@@ -23,7 +23,11 @@
     border-left: 2px solid;
     border-color: inherit;
 }
-
+.header_flex{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+} 
 .header_img{
     height: 2em;
     border-radius: 1em;
@@ -36,13 +40,19 @@
   }
 }
 @media all and (max-width : 320px){
-    
-    .header__img{
+    .header{
+        line-height: 3em;
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-between;
+    }
+    .header_img{
         display: none;
     }
-
+    
     .header__menu320{
         display: inline-block;
+        margin-top: .5em;
         width: 2em;
         height: 2em;
         border: 1px solid grey;
@@ -53,27 +63,27 @@
         line-height: 200%;
         text-align: center;
     }
-
-    .header__nav{
+    .header_flex{
+        flex-direction: column;
+    }
+    .header_nav{
         border: 1px solid grey;
         border-radius: 10px;
         display:none;
-        flex-direction: column;
-        position: relative;
-        padding: 0 15px;
+        margin-top: 3em;
+        position: absolute;
+        padding: 0 30px;
         width: 15em;
-        
         background-color: inherit;
         
     }
-    .header__users, 
-    .header__posts,
-    .header__sign,
-    .header__reg,
-    .header__sign-reg{
-        display: block;
-        margin: 10px 0;
+    .header_reg {
+        border: none;
         padding: 0;
+        margin: 0;
+    }
+    .header__posts {
+        margin: 0;
     }
     
 }

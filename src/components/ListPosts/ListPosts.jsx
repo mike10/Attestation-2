@@ -72,7 +72,6 @@ const ListPosts = () => {
   }, [statusPost]);  
 
   const mountPosts = () => {
-    
     let mount = []
     for (const item of posts) {
       if(posts[posts.length-1].id == item.id) {

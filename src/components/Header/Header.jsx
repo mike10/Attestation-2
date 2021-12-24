@@ -33,16 +33,16 @@ const Header = () => {
   const setSign = () => {
     if (sign.id == undefined){
       return (
-      <div className="header__sign form_flex">
-        <Locale/>  
+      <div className="header__sign header_flex">
+        <Locale className="locale"/>  
         <div className="header__sign"><Link to="/sign">{t('sign')}</Link></div>
         <div className="header_reg"><Link to="/">{t('registration')}</Link></div>
       </div>)
     } 
     return(<>
-      <div className="header__sign form_flex">
-        <Locale/>
-        <Link to={"/profile/"+sign.id} className='form_flex'>
+      <div className="header__sign header_flex">
+        <Locale className="locale"/>
+        <Link to={"/profile/"+sign.id} className='header_flex'>
           <img src= {sign.picture} className="header_img"/>
           <div>{sign.lastName}</div>
         </Link>
@@ -57,12 +57,19 @@ const Header = () => {
     dispatch(closeProfile())
   }
 
+  const closeMenu320 = () => {
+    if(menu320 === "show") {
+      setMenu320("un-show")
+    }
+    
+  }  
+
     return (
       <div className={`header form-fixed form_theme-${theme}`}>
           <div className="header__menu320" onClick={()=>{menu320=="show" ? setMenu320("un-show") : setMenu320("show")}}>☰</div>
-          <nav className={`header_nav form_flex ${menu320}`}>
+          <nav className={`header_nav header_flex ${menu320}`} onClick={()=>{if(menu320 === "show") { setMenu320("un-show") }}}  >
             <div className="header__logo">{t('logo')}</div>
-            <div className="form_flex">
+            <div className="header_flex">
               <div className="header__users"><Link to="/users">👥 {t('users')}</Link></div>
               <div className="header__posts"><Link to="/posts">▤ {t('posts')}</Link></div>
             </div>
@@ -70,6 +77,7 @@ const Header = () => {
               {setSign()}
             {/* </div> */}
           </nav>
+          <Locale className="locale320"/>
       </div>
     );
 }

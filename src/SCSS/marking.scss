@@ -26,26 +26,8 @@ $grey: #333;
 .form{
   border: 2px solid $borderColor;
   border-radius: 10px;
-  *background-color: $bgWhite;
   margin: .5em;
   padding: 1em;
-}
-
-.form_theme-white{
-  background-color: #fff;
-  color: #000;
-}
-.form_theme-dark{
-  background-color: #333;
-  color: #fff;
-}
-.form_theme-f2white{
-  background-color: #f2f2f2;
-  color: #000;
-}
-.form_theme-f2dark{
-  background-color: #555;
-  color: #fff;
 }
 .form_flex{
   display: flex;
@@ -70,8 +52,32 @@ $grey: #333;
 }
 .form_scroll{
   overflow-y: auto;
-  
 }
+
+.form_theme-white{
+  background-color: #fff;
+  color: #000;
+}
+.form_theme-dark{
+  background-color: #333;
+  color: #fff;
+}
+.form_theme-f2white{
+  background-color: #f2f2f2;
+  color: #000;
+}
+.form_theme-f2dark{
+  background-color: #555;
+  color: #fff;
+}
+
 .error{
     outline: 3px solid red;
 }
+
+
+// @media all and (max-width : 320px){
+//   .form_flex{
+//     flex-direction: column;
+//   }
+// }

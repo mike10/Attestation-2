@@ -2,7 +2,7 @@ import './Locale.scss';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
-const Locale = () => {
+const Locale = (props) => {
 
 
     const [active, setActive] = useState({ru: "locale__a_active", en:""})
@@ -19,10 +19,10 @@ const Locale = () => {
     }
 
     return (
-      <div className='locale'>
-          <a className={active.ru} href="#" onClick={OnClick}>ru</a>
-          <a className={active.en} href="#" onClick={OnClick}>en</a>
-      </div>
+        <div className={props.className}>
+            <a className={active.ru} href="#" onClick={OnClick}>ru</a>
+            <a className={active.en} href="#" onClick={OnClick}>en</a>
+        </div>
     );
 }
 

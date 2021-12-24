@@ -105,7 +105,7 @@ import {formatDate}  from "../../additionData/FormatDate";
             </ModalWin>
 
             <div className={`userprofile__prof form form_theme-${theme}`} >
-                <div className="form_flex">
+                <div className="form_flex ">
                     <div >
                         {profile.picture && <img className="userprofile__img form_border-rad10" src={profile.picture} alt="" />}
                         
