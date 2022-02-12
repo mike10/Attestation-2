@@ -7,4 +7,4 @@
 
 Использовался такой стек технологий:
 React, Redux, react-router-dom, i18next, fetch, axios
-html5, scss, Flex-box/Grid-layout
+html5, scss, Flex-box/Grid-layout, Node, Express
