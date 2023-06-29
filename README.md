@@ -1,10 +1,7 @@
 # Описание
 
-Данная работа представляет собой клиент-серверное приложение, 
-наподобие обычной маленькой социальной сети или форума. В данном приложении можно создать пользователя, 
-посмотреть данные и посты других пользователей. Так же есть возможность 
-установить тему светлую и темную, и выбрать язык - русский или английский.
+This work is a client-server application, like an ordinary small social network or forum. In this application, you can create a user, view the data and posts of other users. It is also possible to set the theme light and dark, and select the language - Russian or English.
 
-Использовался такой стек технологий:
+The following stack of technologies was used:
 React, Redux, react-router-dom, i18next, fetch, axios
 html5, scss, Flex-box/Grid-layout, Node, Express
